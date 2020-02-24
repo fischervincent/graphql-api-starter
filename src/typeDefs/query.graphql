@@ -1,0 +1,4 @@
+type Query {
+  getUsers(limit: Int): [User]
+  getUserById(id: ID!): User
+}

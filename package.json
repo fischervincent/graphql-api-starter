@@ -1,0 +1,83 @@
+{
+  "name": "graphql-api",
+  "version": "1.0.0",
+  "description": "boilerplate for graphql api",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest",
+    "watch": "nodemon --exec babel-node -r dotenv/config ./src/index.js",
+    "watch:test": "NODE_ENV=test yarn watch",
+    "lint": "eslint .",
+    "prettier": "prettier --write '**/{*.{js?(on),ts,y?(a)ml,graphql,md},.*.y?(a)ml,.*.json,.prettierrc,.eslintrc}'",
+    "build": "babel -d ./build ./src --copy-files",
+    "prebuild": "rm -rf build/*",
+    "start": "node ./build/index.js",
+    "start:test": "NODE_ENV=test yarn start",
+    "cucumber": "NODE_ENV=test cucumber-js"
+  },
+  "author": "Vincent Fischer",
+  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix"
+    ]
+  },
+  "jest": {
+    "rootDir": "src",
+    "clearMocks": true,
+    "setupFilesAfterEnv": [
+      "../test/testSetup"
+    ],
+    "testMatch": [
+      "**/__test__/**/*.test.js"
+    ]
+  },
+  "dependencies": {
+    "apollo-datasource": "^0.7.0",
+    "apollo-datasource-rest": "^0.7.0",
+    "apollo-server": "^2.9.9",
+    "dotenv": "^8.2.0",
+    "graphql": "^14.5.8",
+    "knex": "^0.20.2",
+    "merge-graphql-schemas": "^1.5.8",
+    "pg": "^7.18.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/node": "^7.0.0",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.7.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.7.5",
+    "@babel/preset-env": "^7.1.6",
+    "@commitlint/cli": "^8.3.4",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@semantic-release/changelog": "^5.0.0",
+    "@semantic-release/git": "^9.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^25.0.0",
+    "core-js": "^3.4.7",
+    "cucumber": "^6.0.5",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "expect": "^25.0.0",
+    "express": "^4.17.1",
+    "husky": "^4.0.0",
+    "jest": "^25.0.0",
+    "lint-staged": "^10.0.0",
+    "mock-knex": "^0.4.2",
+    "nodemon": "^2.0.1",
+    "prettier": "1.19.1",
+    "pretty-quick": "^2.0.1"
+  }
+}

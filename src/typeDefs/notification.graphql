@@ -1,0 +1,5 @@
+type Notification {
+  id: ID!
+  subject: String
+  content: String!
+}
